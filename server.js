@@ -3,7 +3,7 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const { request, response } = require('express');
+
 
 //============== Global Variables ==============
 
@@ -12,12 +12,12 @@ const app = express();
 app.use(cors());
 
 //=============== Routes ======================
-app.get('/location', (request, response) =>{
-  const jsonLocationObject = require('./data/location.json');
-  const constructedLocation = new Location(jsonLocationObject);
+// app.get('/location', (request, response) =>{
+//   const jsonLocationObject = require('./data/location.json');
+//   const constructedLocation = new Location(jsonLocationObject);
 
-  response.send(constructedLocation);
-});
+//   response.send(constructedLocation);
+// });
 
 // app.get('/weather', sendWeatherData);
 
@@ -25,5 +25,6 @@ app.get('/location', (request, response) =>{
 //   const jsonWeatherObject = require('./data/weather.json');
 //   const arrWeatherJson = jsonWeatherObject.
 // }
-  
+
+app.listen(PORT, () => console.log(`we are running on PORT : ${PORT}`));
 
