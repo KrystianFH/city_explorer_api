@@ -3,7 +3,7 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const { json } = require('body-parser');
+// const { json } = require('body-parser');
 
 
 //============== Global Variables ==============
