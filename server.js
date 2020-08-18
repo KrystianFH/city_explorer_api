@@ -27,7 +27,7 @@ function sendWeatherData(request, response){
   const jsonWeatherObject = require('./data/weather.json');
   const constructedWeather = new Weather(jsonWeatherObject);
 
-  response.send(constructedWeather);
+  response.send(weatherArr);
 }
 
 //================= Other Functions ================
