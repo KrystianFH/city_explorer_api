@@ -21,14 +21,14 @@ app.get('/location', (request, response) =>{
   response.send(constructedLocation);
 });
 
-app.get('/weather', sendWeatherData);
-
-function sendWeatherData(request, response){
+app.get('/weather', (request, response) => {
   const jsonWeatherObject = require('./data/weather.json');
-  const constructedWeather = new Weather(jsonWeatherObject);
-
-  response.send(constructedWeather);
-}
+  const weatherArr = [];
+  jsonWeatherObject.data.forEach(forecast => {
+    weatherArr.push(new Weather(forecast));
+  });
+  response.send(weatherArr);
+});
 
 //================= Other Functions ================
 function Location(jsonLocationObject, city){
@@ -40,16 +40,11 @@ function Location(jsonLocationObject, city){
   this.search_query = city;
 }
 
-let weatherArr = [];
+
 
 function Weather(jsonWeatherObject){
-
-  for(let i in jsonWeatherObject.data){
-    this.forecast = jsonWeatherObject.data[i].weather.description;
-    this.date = jsonWeatherObject.data[i].datetime;
-
-    weatherArr.push(this.forecast, this.time);
-  }
+  this.forecast = jsonWeatherObject.weather.description;
+  this.time = jsonWeatherObject.valid_date;
 }
 //===============Start the Server====================
 app.listen(PORT, () => console.log(`we are running on PORT : ${PORT}`));
