@@ -25,7 +25,7 @@ This application will allow a user to input a location, and return a map and des
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 
-Number and name of feature: # 1 Repository Set-Up
+Number and name of feature: # 1.1 Repository Set-Up
 
 Estimate of time needed to complete: 30 minutes
 
@@ -36,7 +36,7 @@ Finish time: 3:30p
 Actual time needed to complete: 30 minutes
 
 
-Number and name of feature: # 2 Locations
+Number and name of feature: # 1.2 Locations
 
 Estimate of time needed to complete: 90 minutes
 
@@ -47,12 +47,67 @@ Finish time: 5:15p
 Actual time needed to complete: 95 minutes
 
 
-Number and name of feature: # 3 Weather
+Number and name of feature: # 1.3 Weather
 
 Estimate of time needed to complete: 90 minutes
 
 Start time: 5:15p
 
-Finish time: 
+Finish time: the next day, 3:00p
 
-Actual time needed to complete: 
+Actual time needed to complete: 65 minutes
+
+
+Number and name of feature: # 1.4 Errors
+
+Estimate of time needed to complete: 15 minutes
+
+Start time: 3:00p
+
+Finish time: 3:15p
+
+Actual time needed to complete: 15 minutes
+
+
+Number and name of feature: # 2.1 Data
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 3:15p
+
+Finish time: the next day, 3:45p
+
+Actual time needed to complete: 30 minutes
+
+
+Number and name of feature: # 2.2 Locations
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 3:45p
+
+Finish time: 4:15p
+
+Actual time needed to complete: 30 minutes
+
+
+Number and name of feature: # 2.3 Weather
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 4:15p
+
+Finish time: 4:35
+
+Actual time needed to complete: 25 minutes
+
+
+Number and name of feature: # 2.4 Trails
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 4:35p
+
+Finish time: 4:50p
+
+Actual time needed to complete: 15 minutes
