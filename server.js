@@ -3,6 +3,8 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
+const { response } = require('express');
+const { request } = require('http');
 // const { json } = require('body-parser');
 
 
@@ -20,6 +22,10 @@ app.get('/location', (request, response) =>{
 
   response.send(constructedLocation);
 });
+
+// if(request.query.city !== 'Lynnwood'){
+//   return response.status(500).send('Use `Lynnwood`');
+// }
 
 app.get('/weather', (request, response) => {
   const jsonWeatherObject = require('./data/weather.json');
@@ -40,12 +46,11 @@ function Location(jsonLocationObject, city){
   this.search_query = city;
 }
 
-
-
 function Weather(jsonWeatherObject){
   this.forecast = jsonWeatherObject.weather.description;
   this.time = jsonWeatherObject.valid_date;
 }
+
 //===============Start the Server====================
 app.listen(PORT, () => console.log(`we are running on PORT : ${PORT}`));
 
