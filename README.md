@@ -31,6 +31,28 @@ Estimate of time needed to complete: 30 minutes
 
 Start time: 3:00p
 
-Finish time: _____
+Finish time: 3:30p
 
-Actual time needed to complete: _____
+Actual time needed to complete: 30 minutes
+
+
+Number and name of feature: # 2 Locations
+
+Estimate of time needed to complete: 90 minutes
+
+Start time: 3:40p
+
+Finish time: 5:15p
+
+Actual time needed to complete: 95 minutes
+
+
+Number and name of feature: # 3 Weather
+
+Estimate of time needed to complete: 90 minutes
+
+Start time: 5:15p
+
+Finish time: 
+
+Actual time needed to complete: 
