@@ -60,7 +60,7 @@ function sendTrailData(request, response){
 
   superagent.get(urlToSearchForTrail)
     .then(trailsComingBack =>{
-      const trailPass = trailsComingBack.body.data;
+      const trailPass = trailsComingBack.body.trails;
       const trailArr = trailPass.map(index => new Trail(index));
       response.send(trailArr);
     })
@@ -87,9 +87,16 @@ function Weather(jsonWeatherObject){
 }
 
 function Trail(jsonTrailObject){
-  this.name = jsonTrailObject[0].name;
-  this.length = jsonTrailObject[0].length;
-  this.summary = jsonTrailObject[0].summary;
+  this.name = jsonTrailObject.name;
+  this.location = jsonTrailObject.location;
+  this.length = jsonTrailObject.length;
+  this.stars = jsonTrailObject.stars;
+  this.star_votes = jsonTrailObject.star_votes;
+  this.summary = jsonTrailObject.summary;
+  this.trail_url = jsonTrailObject.trail_url;
+  this.conditions = jsonTrailObject.conditions;
+  this.condition_date = jsonTrailObject.condition_date;
+  this.condition_time = jsonTrailObject.condition_time;
 }
 
 //===============Start the Server====================
