@@ -46,7 +46,7 @@ function Weather(jsonWeatherObject){
 
   for(let i in jsonWeatherObject.data){
     this.forecast = jsonWeatherObject.data[i].weather.description;
-    this.date = jsonWeatherObject.data[i].valid_date;
+    this.date = jsonWeatherObject.data[i].datetime;
 
     weatherArr.push(this.forecast, this.time);
   }
