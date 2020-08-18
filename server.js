@@ -27,7 +27,7 @@ function sendWeatherData(request, response){
   const jsonWeatherObject = require('./data/weather.json');
   const constructedWeather = new Weather(jsonWeatherObject);
 
-  response.send(constructedWeather);
+  response.send(weatherArr);
 }
 
 //================= Other Functions ================
@@ -47,9 +47,8 @@ function Weather(jsonWeatherObject){
   for(let i in jsonWeatherObject.data){
     this.forecast = jsonWeatherObject.data[i].weather.description;
     this.date = jsonWeatherObject.data[i].datetime;
-
-    weatherArr.push(this.forecast, this.time);
   }
+  weatherArr.push(this.forecast, this.time);  
 }
 //===============Start the Server====================
 app.listen(PORT, () => console.log(`we are running on PORT : ${PORT}`));
