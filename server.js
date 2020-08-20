@@ -4,6 +4,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const superagent = require('superagent');
+const pg = require('pg');
 
 
 //============== Global Variables ==============
@@ -13,10 +14,23 @@ const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const app = express();
+const DATABASE_URL =process.env.DATABASE_URL;
+
+//======configure the server and database =====
+
 app.use(cors());
+const client = new pg.Client(DATABASE_URL);
+client.on('error', error => console.error(error));
 
 //=============== Routes ======================
+
 app.get('/location', sendLocationData);
+app.get('/weather', sendWeatherData);
+app.get('/trails', sendTrailData);
+// app.get('/movies'), sendMovieData);
+// app.get('/yelp'), sendYelpData;
+
+//========== Route Handlers ===================
 function sendLocationData(request, response){
   const city = request.query.city;
   const urlToSearch = `https://us1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${city}&format=json`;
@@ -26,6 +40,12 @@ function sendLocationData(request, response){
       const superagentResultArray = whateverComesBack.body;
       const constructedLocation = new Location(superagentResultArray);
       response.send(constructedLocation);
+
+      const saveLocationQuery = 'INSERT INTO cities (formatted_query, longitude, latitude, search_query)VALUES ($1, $2, $3, $4)';
+      const locationArray = [constructedLocation.formatted_query, constructedLocation.longitude, constructedLocation.latitude, constructedLocation.search_query];
+      client.query(saveLocationQuery, locationArray)
+        .then(() => console.log('it saved'))
+        .catch(error => console.error(error));
     })
     .catch(error => {
       console.log(error);
@@ -34,7 +54,7 @@ function sendLocationData(request, response){
 }
 
 
-app.get('/weather', sendWeatherData);
+
 function sendWeatherData(request, response){
   let latitude = request.query.latitude;
   let longitude = request.query.longitude;
@@ -52,7 +72,6 @@ function sendWeatherData(request, response){
     });
 }
 
-app.get('/trails', sendTrailData);
 function sendTrailData(request, response){
   let latitude = request.query.latitude;
   let longitude = request.query.longitude;
@@ -73,8 +92,6 @@ function sendTrailData(request, response){
 
 //================= Other Functions ================
 function Location(jsonLocationObject, city){
-  console.log(jsonLocationObject);
-
   this.formatted_query = jsonLocationObject[0].display_name;
   this.latitude = jsonLocationObject[0].lat;
   this.longitude = jsonLocationObject[0].lon;
@@ -100,4 +117,5 @@ function Trail(jsonTrailObject){
 }
 
 //===============Start the Server====================
+
 app.listen(PORT, () => console.log(`we are running on PORT : ${PORT}`));
